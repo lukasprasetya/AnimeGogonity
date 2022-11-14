@@ -15,6 +15,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+       // buildConfigField "String", "BASE_URL_GOGO_ANIME", "\"https://gogoanime.consumet.org/\""
+
+       // buildConfigField "String" , "BASE_URL" , "\"https://api.themoviedb.org/3/discover/\""
     }
 
     buildTypes {
@@ -23,6 +26,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "version"
+    productFlavors{
+        production{
+            dimension = 'version'
+            buildConfigField ("String", "BASE_URL_GOGO_ANIME", "\"https://gogoanime.consumet.org/\"")
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
